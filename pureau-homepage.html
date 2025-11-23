@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUR'EAU - Natural Ceramic Water Bottles</title>
+    <style>
+        :root {
+            --color-primary: #8B7355;
+            --color-secondary: #D4A574;
+            --color-accent: #5A8C7E;
+            --color-bg: #FAF8F5;
+            --color-white: #FFFFFF;
+            --color-text: #2C2C2C;
+            --color-text-light: #6B6B6B;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--color-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.15rem;
+        }
+
+        .water-drop {
+            display: inline-block;
+            width: 12px;
+            height: 16px;
+            background: linear-gradient(135deg, #5A8C7E 0%, #4A7A6D 100%);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            margin: 0 0.2rem;
+            position: relative;
+            top: -2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color-accent);
+        }
+
+        .user-menu {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-user {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--color-primary);
+            background: transparent;
+            color: var(--color-primary);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-user:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* Hero Section */
+        .hero {
+            width: 100%;
+            height: 600px;
+            background: url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/875809df-14f8-4b09-b6d0-f1ab50a180d8');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Products Section */
+        .products-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 3rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: var(--color-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            flex: 1;
+            padding: 0.75rem;
+            background: var(--color-accent);
+            color: var(--color-white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #4A7A6D;
+        }
+
+        .btn-secondary {
+            flex: 1;
+            padding: 0.75rem;
+            background: transparent;
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* Brand Philosophy Section */
+        .philosophy-section {
+            background: var(--color-white);
+            padding: 4rem 2rem;
+        }
+
+        .philosophy-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .philosophy-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 3rem;
+        }
+
+        .philosophy-content {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .philosophy-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .philosophy-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .philosophy-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .philosophy-text h3 {
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-text ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .philosophy-text li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .philosophy-text li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: bold;
+        }
+
+        .philosophy-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--color-bg);
+            border-radius: 8px;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--color-accent);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .process-step h4 {
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--color-white);
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .philosophy-item {
+                grid-template-columns: 1fr;
+            }
+
+            .philosophy-item:nth-child(even) {
+                direction: ltr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="brand">
+                <span class="brand-name">PUR<span class="water-drop"></span>EAU</span>
+            </a>
+            <nav>
+                <a href="#classic">Classic Collection</a>
+                <a href="#collaboration">Collaborations</a>
+                <a href="#accessories">Accessories</a>
+                <a href="#other">Other</a>
+            </nav>
+            <div class="user-menu">
+                <button class="btn-user">Login</button>
+                <button class="btn-user">Register</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Pure. Natural. Sustainable.</h1>
+            <p>Handcrafted ceramic water bottles for conscious living</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <h2 class="section-title">Our Collections</h2>
+        <div class="products-grid">
+            <!-- Classic Collection -->
+            <div class="product-card" id="classic">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/01d9826b-e15e-4daa-a8af-942fe13dd139" alt="Classic Ceramic Bottle" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Classic Collection</h3>
+                    <p class="product-price">€30.00</p>
+                    <div class="product-actions">
+                        <button class="btn-primary">Add to Cart</button>
+                        <a href="product-detail.html" class="btn-secondary" style="display: inline-block; text-align: center; text-decoration: none; padding: 0.75rem 1.5rem;">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Collaboration -->
+            <div class="product-card" id="collaboration">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/e9eb8be6-2913-4c97-8c86-3358ebe3e365" alt="Collaboration Bottle" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Collaboration Series</h3>
+                    <p class="product-price">€50.00</p>
+                    <div class="product-actions">
+                        <button class="btn-primary">Add to Cart</button>
+                        <button class="btn-secondary">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accessories -->
+            <div class="product-card" id="accessories">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/c2817ee6-3163-43ec-ac70-22f4884fba33" alt="Accessories" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Accessories</h3>
+                    <p class="product-price">€0.00</p>
+                    <div class="product-actions">
+                        <button class="btn-primary">Add to Cart</button>
+                        <button class="btn-secondary">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other -->
+            <div class="product-card" id="other">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/55eb184c-d878-4c4f-a1a3-55aeaeb0c1d1" alt="Other Products" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Christmas Limited Edition</h3>
+                    <p class="product-price">€45.00</p>
+                    <div class="product-actions">
+                        <button class="btn-primary">Add to Cart</button>
+                        <button class="btn-secondary">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charcoal Filter -->
+            <div class="product-card" id="charcoal-filter">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/4f684d34-7c3f-4d29-8746-e58d84940b97" alt="Bamboo Charcoal Filter" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Bamboo Charcoal Filter</h3>
+                    <p class="product-price">€5.00</p>
+                    <div class="product-actions">
+                        <button class="btn-primary">Add to Cart</button>
+                        <button class="btn-secondary">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Philosophy Section -->
+    <section class="philosophy-section">
+        <div class="philosophy-container">
+            <h2 class="philosophy-title">Our Philosophy</h2>
+            
+            <div class="philosophy-content">
+                <!-- Sustainability -->
+                <div class="philosophy-item">
+                    <div class="philosophy-text">
+                        <h3>Sustainable by Nature</h3>
+                        <ul>
+                            <li>100% recyclable clay material</li>
+                            <li>Natural, eco-friendly ingredients</li>
+                            <li>Energy-efficient production process</li>
+                            <li>Reduces single-use plastic waste</li>
+                            <li>Biodegradable packaging</li>
+                        </ul>
+                    </div>
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1763646669/search_images/02c6e2bdfe75ca1181109a3de407a88d862f9dab.jpg" alt="Sustainable Materials" class="philosophy-image">
+                </div>
+
+                <!-- Production Process -->
+                <div class="philosophy-item">
+                    <div class="philosophy-text">
+                        <h3>Craftsmanship & Quality</h3>
+                        <p>Each PUR'EAU bottle is carefully crafted through a meticulous process that combines traditional pottery techniques with modern quality standards.</p>
+                    </div>
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1763646668/search_images/433452592004e122d21b8eebf59eabc66acc51ac.jpg" alt="Pottery Making Process" class="philosophy-image">
+                </div>
+            </div>
+
+            <!-- Production Steps -->
+            <h3 style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; color: var(--color-primary); font-size: 2rem;">Our Production Process</h3>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Natural Sourcing</h4>
+                    <p>Premium clay and bamboo charcoal filters sourced from sustainable suppliers</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Handcrafted Molding</h4>
+                    <p>Each bottle is carefully formed using traditional pottery techniques</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>High-Temperature Firing</h4>
+                    <p>Fired at optimal temperatures to ensure durability and safety</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Quality Control</h4>
+                    <p>Rigorous inspection and eco-friendly packaging before delivery</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>Email: info@pureau.com</li>
+                    <li>Instagram: @pureau_official</li>
+                    <li>Facebook: PUR'EAU</li>
+                    <li>Address: 123 Eco Street, Green City</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Shipping Information</h4>
+                <ul>
+                    <li><a href="#">Shipping Methods</a></li>
+                    <li><a href="#">Shipping Costs</a></li>
+                    <li><a href="#">Delivery Time</a></li>
+                    <li><a href="#">International Shipping</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Terms &amp; Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>About PUR'EAU</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Wholesale</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 PUR'EAU. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add to cart functionality
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.closest('.product-info').querySelector('.product-name').textContent;
+                alert(`Added ${productName} to cart!`);
+            });
+        });
+
+        // View details functionality
+        document.querySelectorAll('.btn-secondary').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.closest('.product-info').querySelector('.product-name').textContent;
+                alert(`Viewing details for ${productName}`);
+            });
+        });
+
+        // Login/Register buttons
+        document.querySelectorAll('.btn-user').forEach(button => {
+            button.addEventListener('click', function() {
+                alert(`${this.textContent} functionality would be implemented here`);
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
